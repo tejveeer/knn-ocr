@@ -10,16 +10,22 @@ def gather_data(training_images: Images,
                 testing_images: Images, 
                 testing_labels: Labels,
                 **kwargs) -> Data:
-
+    """
+    Given the testing and training data, this function gathers the results, actual digit in the image as well as the
+    algorithm's confidence in the prediction.
+    """
     return [
         ((result := kNN(training_images, training_labels, testing_image, **kwargs)),
          label,
-         100 * result.count(label) / len(result))
+         100 * result.count(label) / len(result)) # confidence
         
         for (label, testing_image) in zip(testing_labels, testing_images)
     ]
 
-def show_statistics(data: Data) -> ...:
+def show_statistics(data: Data) -> None:
+    """
+    Given the data gathered from the gathering function, this function presents the statistics.
+    """
 
     average_confidence = sum(confidence for (*_, confidence) in data) / len(data)
     correct_predictions = 100 * sum(1 for (*_, confidence) in data if confidence > 0) / len(data)
@@ -32,7 +38,7 @@ def show_statistics(data: Data) -> ...:
         print(f"{actual_number} -> {predictions} | {round(confidence)}%")
 
 if __name__ == '__main__':
-    training_images, training_labels, testing_images, testing_labels = get_files(600)
+    training_images, training_labels, testing_images, testing_labels = get_files(10_000)
 
     data = gather_data(training_images, training_labels, testing_images, testing_labels)
     show_statistics(data)
