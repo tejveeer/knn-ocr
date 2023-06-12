@@ -21,8 +21,6 @@ class Analysis:
         return sum(confidence for (*_, confidence) in data) / amount
     
     def show_graph(self) -> None:
-        print(self.amount)
-
         # euclidean metric
         x1, y1 = list(zip(*(
             (amount, self.get_point(amount, euclidean_metric)) 
