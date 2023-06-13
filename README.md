@@ -2,7 +2,7 @@
 The purpose of this summative project was to implement k-Nearest Neighbors to images to determine the digit an image represents. The algorithm was trained on the [MNIST dataset](http://yann.lecun.com/exdb/mnist/) as other datasets had images of varying sizes which would require unnecessary image manipulation.
 
 ## Installation
-Use `pip install -r requirements.txt` to install the necessary packages for running the files.
+Ensure you're using Python3.11+ and use `pip install -r requirements.txt` to install the necessary packages for running the files.
 
 ## Files
 | Filename | Description |
