@@ -38,7 +38,9 @@ def show_statistics(data: Data) -> None:
         print(f"{actual_number} -> {predictions} | {round(confidence)}%")
 
 if __name__ == '__main__':
-    training_images, training_labels, testing_images, testing_labels = get_files(10_000)
+    # change get_file parameter to change files trained on
+    training_images, training_labels, testing_images, testing_labels = get_files(3000)
 
+    # add dist_metric=manhattan_metric to change algorithm
     data = gather_data(training_images, training_labels, testing_images, testing_labels)
     show_statistics(data)
